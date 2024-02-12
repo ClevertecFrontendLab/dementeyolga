@@ -1,0 +1,22 @@
+.trigger {
+    position: absolute;
+    right: -20px;
+}
+
+.sider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.siteLayout {
+    width: 100%;
+}

@@ -1,19 +1,27 @@
+import {
+    CalendarOutlined,
+    HeartFilled,
+    IdcardOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    TrophyFilled,
+} from '@ant-design/icons';
+import { Button, Layout, Menu, Typography } from 'antd';
 import React, { useState } from 'react';
-import Layout from 'antd/lib/layout/layout';
-import { Header, Content, Footer } from 'antd/lib/layout/layout';
-import Sider from 'antd/lib/layout/Sider';
+import 'antd/dist/antd.css';
+import styles from './main-page.module.scss';
+import exitIconPath from './../../assets/img/exit.svg';
 
-import './main-page.module.scss';
-import { Menu } from 'antd';
-import { CalendarOutlined, HeartFilled, IdcardOutlined, TrophyFilled, UploadOutlined, VideoCameraOutlined } from '@ant-design/icons';
+const { Header, Sider, Content } = Layout;
 
 export const MainPage: React.FC = () => {
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(false);
+    const ExitIcon: React.FC = () => <img src={exitIconPath}></img>;
 
     return (
         <Layout>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className='demo-logo-vertical' />
+            <Sider className={styles.sider} trigger={null} collapsible collapsed={collapsed}>
+                <div className='logo' />
                 <Menu
                     theme='light'
                     mode='inline'
@@ -36,14 +44,43 @@ export const MainPage: React.FC = () => {
                         },
                         {
                             key: '4',
-                            icon: <IdcardOutlined />>,
+                            icon: <IdcardOutlined />,
                             label: 'Профиль',
                         },
                     ]}
                 />
+
+                {/* <Menu.Item key='1' icon={<CalendarOutlined />}>
+                    Календарь
+                </Menu.Item> */}
+
+                <Button className={styles.button} type='text' icon={<ExitIcon></ExitIcon>}>
+                    Выйти
+                </Button>
+
+                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    className: `trigger ${styles.trigger}`,
+                    id: 'trigger',
+                    onClick: () => setCollapsed(!collapsed),
+                })}
             </Sider>
-            <Sider trigger={null} collapsible collapsed={collapsed}></Sider>
-            <Header>Header</Header>
+            <Layout className={styles.siteLayout}>
+                <Header className='site-layout-background' style={{ padding: 0 }}>
+                    <Typography.Title editable level={1} style={{ margin: 0 }}>
+                        h1. Ant Design
+                    </Typography.Title>
+                </Header>
+                <Content
+                    className='site-layout-background'
+                    style={{
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                    }}
+                >
+                    Content
+                </Content>
+            </Layout>
         </Layout>
     );
 };
