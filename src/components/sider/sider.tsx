@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import s from './Sider.module.scss';
 import Sider from 'antd/lib/layout/Sider';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { Menu, MenuTheme, Row, Space } from 'antd';
+import { Menu, MenuTheme } from 'antd';
 import logoShort from './../../assets/img/logo-short.svg';
 import logoWide from './../../assets/img/logo-wide.svg';
 import { ExitIcon } from '@components/icons/ExitIcon';
@@ -30,14 +30,14 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
     theme,
     collapsed,
     iconsColor,
-    width,
     setCollapsed,
-    setSiderWidth,
 }) => {
     return (
         <Sider
-            className={s.sider}
-            style={{ backgroundColor: '#ffffff', width: width + 'px' }}
+            className={`${s.sider} ${collapsed ? s.collapsed : ''}`}
+            style={{
+                backgroundColor: '#ffffff',
+            }}
             trigger={null}
             collapsible
             collapsed={collapsed}

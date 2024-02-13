@@ -1,21 +1,11 @@
-import {
-    AndroidFilled,
-    AppleFilled,
-    CalendarOutlined,
-    HeartFilled,
-    IdcardOutlined,
-    TrophyFilled,
-} from '@ant-design/icons';
+import { CalendarOutlined, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
 import { HeaderComponent } from '@components/Header/Header';
 import { SiderComponent } from '@components/Sider/Sider';
-import { ExitIcon } from '@components/icons/ExitIcon';
 import { Button, Card, Col, Layout, Row, Space } from 'antd';
 import React, { useState } from 'react';
 import 'antd/dist/antd.less';
 import s from './MainPage.module.scss';
 import Title from 'antd/lib/typography/Title';
-import { Footer } from 'antd/lib/layout/layout';
-import Meta from 'antd/lib/card/Meta';
 import { geekblue } from '@ant-design/colors';
 import { FooterComponent } from '@components/Footer/Footer';
 
@@ -62,7 +52,7 @@ export const MainPage: React.FC = () => {
                 iconsColor={iconsColor}
             ></SiderComponent>
 
-            <Layout className={s.mainLayout} style={{ marginLeft: siderWidth + 'px' }}>
+            <Layout className={`${s.mainLayout}  ${collapsed ? s.siderCollapsed : ''}`}>
                 <HeaderComponent></HeaderComponent>
                 <Content
                     className='site-layout-background'

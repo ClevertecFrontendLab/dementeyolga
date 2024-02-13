@@ -1,7 +1,17 @@
 .sider {
+    width: 208px !important;
+    max-width: 100% !important;
     height: 100vh;
     position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
     z-index: 10;
+
+    &.collapsed {
+        width: 64px !important;
+    }
 }
 
 .trigger {
@@ -14,7 +24,6 @@
 
 .logo {
     margin: 44px 0 67px;
-    flex: 1;
     display: flex;
     justify-content: center;
 }

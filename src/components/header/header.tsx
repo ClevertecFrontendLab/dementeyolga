@@ -14,7 +14,7 @@ export const HeaderComponent: React.FC = () => {
                     <Breadcrumb.Item>Главная</Breadcrumb.Item>
                 </Breadcrumb>
             </Row>
-            <Row>
+            <Row style={{ flexWrap: 'nowrap' }}>
                 <Title style={{ color: 'currentcolor' }}>
                     Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
                     мечты!

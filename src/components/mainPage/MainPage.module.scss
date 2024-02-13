@@ -11,9 +11,16 @@
 }
 
 .mainLayout {
+    margin-left: 208px;
     width: 100%;
     background-image: url('./../../assets/img/main-page-bg-light.png');
     background-size: cover;
+
+    transition: 0.3s;
+
+    &.siderCollapsed {
+        margin-left: 64px;
+    }
 }
 
 .benefits p {
