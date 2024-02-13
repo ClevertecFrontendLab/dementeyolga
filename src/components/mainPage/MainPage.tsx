@@ -23,6 +23,7 @@ const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
     const [iconsColor, setIconsColor] = useState(geekblue[9]);
+    const [siderWidth, setSiderWidth] = useState(208);
     const [collapsed, setCollapsed] = useState(false);
     const [menuItems, setMenuItems] = useState([
         {
@@ -45,11 +46,6 @@ export const MainPage: React.FC = () => {
             icon: <IdcardOutlined style={{ color: iconsColor }} />,
             label: 'Профиль',
         },
-        {
-            key: '5',
-            icon: <ExitIcon color={iconsColor} />,
-            label: 'Выйти',
-        },
     ]);
     const [selectedItems, setSelectedItems] = useState(['1']);
 
@@ -61,9 +57,12 @@ export const MainPage: React.FC = () => {
                 items={menuItems}
                 selectedItems={selectedItems}
                 setCollapsed={setCollapsed}
+                width={siderWidth}
+                setSiderWidth={setSiderWidth}
+                iconsColor={iconsColor}
             ></SiderComponent>
 
-            <Layout className={s.mainLayout}>
+            <Layout className={s.mainLayout} style={{ marginLeft: siderWidth + 'px' }}>
                 <HeaderComponent></HeaderComponent>
                 <Content
                     className='site-layout-background'

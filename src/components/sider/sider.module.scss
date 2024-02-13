@@ -1,10 +1,25 @@
 .sider {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 100vh;
+    position: fixed !important;
+    z-index: 10;
 }
 
 .trigger {
     position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
     right: -20px;
+}
+
+.logo {
+    margin: 44px 0 67px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.exitBtn {
+    position: absolute;
+    bottom: 0;
 }
