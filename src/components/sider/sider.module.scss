@@ -1,0 +1,10 @@
+.sider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.trigger {
+    position: absolute;
+    right: -20px;
+}

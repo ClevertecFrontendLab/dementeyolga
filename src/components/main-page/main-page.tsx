@@ -11,16 +11,17 @@ import Icon, {
     TrophyFilled,
 } from '@ant-design/icons';
 import { HeaderComponent } from '@components/Header/Header';
+import { SiderComponent } from '@components/Sider/Sider';
 import { ExitIcon } from '@components/icons/ExitIcon';
 import { Breadcrumb, Button, Card, Col, Layout, Menu, Row, Space } from 'antd';
 import React, { useState } from 'react';
-import 'antd/dist/antd.css';
-import styles from './main-page.module.scss';
+import 'antd/dist/antd.less';
+import s from './main-page.module.scss';
 import Title from 'antd/lib/typography/Title';
 import { Footer } from 'antd/lib/layout/layout';
 import Meta from 'antd/lib/card/Meta';
 
-const { Sider, Content } = Layout;
+const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -51,26 +52,19 @@ export const MainPage: React.FC = () => {
             label: 'Выйти',
         },
     ]);
-    const [currentMenuItem, setCurrentMenuItem] = useState(['1']);
+    const [selectedItems, setSelectedItems] = useState(['1']);
 
     return (
-        <Layout>
-            <Sider className={styles.sider} trigger={null} collapsible collapsed={collapsed}>
-                <div className='logo' />
-                <Menu
-                    theme='light'
-                    mode='inline'
-                    defaultSelectedKeys={currentMenuItem}
-                    items={menuItems}
-                />
+        <Layout className={s.siteLayout}>
+            <SiderComponent
+                collapsed={collapsed}
+                theme='light'
+                items={menuItems}
+                selectedItems={selectedItems}
+                setCollapsed={setCollapsed}
+            ></SiderComponent>
 
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                    className: `trigger ${styles.trigger}`,
-                    id: 'trigger',
-                    onClick: () => setCollapsed(!collapsed),
-                })}
-            </Sider>
-            <Layout className={styles.siteLayout}>
+            <Layout className={s.mainLayout}>
                 <HeaderComponent></HeaderComponent>
                 <Content
                     className='site-layout-background'
