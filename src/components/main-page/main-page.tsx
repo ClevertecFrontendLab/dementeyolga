@@ -1,4 +1,4 @@
-import {
+import Icon, {
     CalendarOutlined,
     HeartFilled,
     IdcardOutlined,
@@ -6,17 +6,17 @@ import {
     MenuUnfoldOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
+import { ExitIcon } from '@components/icons/ExitIcon';
 import { Button, Layout, Menu, Typography } from 'antd';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import styles from './main-page.module.scss';
-import exitIconPath from './../../assets/img/exit.svg';
+// import exitIconSvg from './../../assets/img/exit.svg';
 
 const { Header, Sider, Content } = Layout;
 
 export const MainPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const ExitIcon: React.FC = () => <img src={exitIconPath}></img>;
 
     return (
         <Layout>
@@ -47,16 +47,13 @@ export const MainPage: React.FC = () => {
                             icon: <IdcardOutlined />,
                             label: 'Профиль',
                         },
+                        {
+                            key: '5',
+                            icon: <ExitIcon />,
+                            label: 'Выйти',
+                        },
                     ]}
                 />
-
-                {/* <Menu.Item key='1' icon={<CalendarOutlined />}>
-                    Календарь
-                </Menu.Item> */}
-
-                <Button className={styles.button} type='text' icon={<ExitIcon></ExitIcon>}>
-                    Выйти
-                </Button>
 
                 {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                     className: `trigger ${styles.trigger}`,
