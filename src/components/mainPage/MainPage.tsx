@@ -1,19 +1,27 @@
 import { CalendarOutlined, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
 import { HeaderComponent } from '@components/Header/Header';
 import { SiderComponent } from '@components/Sider/Sider';
-import { Button, Card, Col, Layout, Row, Space } from 'antd';
+import { Button, Card, Col, Grid, Layout, Row, Space } from 'antd';
 import React, { useState } from 'react';
 import Title from 'antd/lib/typography/Title';
 import { geekblue } from '@ant-design/colors';
 import { FooterComponent } from '@components/Footer/Footer';
 import 'antd/dist/antd.less';
 import Meta from 'antd/lib/card/Meta';
+const { useBreakpoint } = Grid;
 import s from './MainPage.module.scss';
 import './MainPageOverride.scss';
 
 const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
+    const screens = useBreakpoint();
+    const currentBreakpoints = (() => {
+        return Object.entries(screens)
+            .filter((screen) => !!screen[1])
+            .map((screen) => screen[0]);
+    })();
+
     const [iconsColor, setIconsColor] = useState(geekblue[8]);
     const [contentAccentColor, setContentAccentColor] = useState(geekblue[5]);
     const [siderWidth, setSiderWidth] = useState(208);
@@ -51,6 +59,7 @@ export const MainPage: React.FC = () => {
                 width={siderWidth}
                 setSiderWidth={setSiderWidth}
                 iconsColor={iconsColor}
+                currentBreakpoints={currentBreakpoints}
             ></SiderComponent>
 
             <Layout className={`${s.mainLayout}  ${collapsed ? s.siderCollapsed : ''}`}>

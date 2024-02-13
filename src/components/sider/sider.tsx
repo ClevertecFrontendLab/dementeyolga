@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import s from './Sider.module.scss';
 import Sider from 'antd/lib/layout/Sider';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { Button, Menu, MenuTheme } from 'antd';
+import { Button, Grid, Menu, MenuTheme } from 'antd';
 import logoShort from './../../assets/img/logo-short.svg';
 import logoWide from './../../assets/img/logo-wide.svg';
 import { ExitIcon } from '@components/icons/ExitIcon';
@@ -16,6 +16,7 @@ interface SiderPropsInterface {
     width: number;
     setCollapsed: Dispatch<SetStateAction<boolean>>;
     setSiderWidth: Dispatch<SetStateAction<number>>;
+    currentBreakpoints: string[];
 }
 
 interface MenuItemInterface {
@@ -28,8 +29,8 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
     items,
     theme,
     collapsed,
-    iconsColor,
     setCollapsed,
+    currentBreakpoints,
 }) => {
     return (
         <Sider
@@ -61,7 +62,9 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
 
             <Button
                 type='text'
-                data-test-id={'sider-switch'}
+                data-test-id={
+                    currentBreakpoints.includes('sm') ? 'sider-switch' : 'sider-switch-mobile'
+                }
                 className={`trigger ${s.trigger}`}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
