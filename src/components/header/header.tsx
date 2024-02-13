@@ -4,10 +4,11 @@ import { Row, Breadcrumb, Button } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
 import Title from 'antd/lib/typography/Title';
 import s from './Header.module.scss';
+import { geekblue } from '@ant-design/colors';
 
 export const HeaderComponent: React.FC = () => {
     return (
-        <Header className={s.header} style={{ padding: 0 }}>
+        <Header className={s.header} style={{ backgroundColor: geekblue[0] }}>
             <Row>
                 <Breadcrumb>
                     <Breadcrumb.Item>Главная</Breadcrumb.Item>

@@ -26,7 +26,13 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
     setCollapsed,
 }) => {
     return (
-        <Sider className={s.sider} trigger={null} collapsible collapsed={collapsed}>
+        <Sider
+            className={s.sider}
+            style={{ backgroundColor: '#ffffff' }}
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+        >
             <div className='logo' />
             <Menu theme={theme} mode='inline' defaultSelectedKeys={selectedItems} items={items} />
 

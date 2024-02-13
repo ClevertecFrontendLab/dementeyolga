@@ -21,4 +21,18 @@ export default defineConfig({
             '@utils': path.resolve(__dirname, 'src/utils'),
         },
     },
+    css: {
+        preprocessorOptions: {
+            less: {
+                modifyVars: {
+                    'primary-color': '#061178',
+                    'heading-color': '#000000',
+                    'text-color': '#262626',
+                    'sider-color': '#ffffff',
+                    'header-color': '#F0F5FF',
+                },
+                javascriptEnabled: true,
+            },
+        },
+    },
 });
