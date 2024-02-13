@@ -17,6 +17,7 @@ import Title from 'antd/lib/typography/Title';
 import { Footer } from 'antd/lib/layout/layout';
 import Meta from 'antd/lib/card/Meta';
 import { geekblue } from '@ant-design/colors';
+import { FooterComponent } from '@components/Footer/Footer';
 
 const { Content } = Layout;
 
@@ -151,23 +152,7 @@ export const MainPage: React.FC = () => {
                         </Space>
                     </Space>
                 </Content>
-                <Footer>
-                    <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                        <Button type='link'>Смотреть отзывы</Button>
-                        <Card
-                            actions={[
-                                <Button type='text' icon={<AndroidFilled />}>
-                                    Android OS
-                                </Button>,
-                                <Button type='text' icon={<AppleFilled />}>
-                                    Android OS
-                                </Button>,
-                            ]}
-                        >
-                            <Meta title='Скачать на телефон ' description='Доступно в PRO-тарифе' />
-                        </Card>
-                    </Row>
-                </Footer>
+                <FooterComponent></FooterComponent>
             </Layout>
         </Layout>
     );
