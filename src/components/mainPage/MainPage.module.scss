@@ -1,3 +1,5 @@
+@import './../Sider/Sider.module.scss';
+
 .button {
     width: 100%;
     display: flex;
@@ -8,19 +10,23 @@
 .siteLayout {
     display: flex;
     flex-direction: row;
+    background-image: url('./../../assets/img/main-page-bg-light.png') !important;
+    background-size: cover;
 }
 
 .mainLayout {
     margin-left: 208px;
     width: 100%;
-    background-image: url('./../../assets/img/main-page-bg-light.png');
-    background-size: cover;
-
+    background-color: transparent;
     transition: 0.3s;
 
     &.siderCollapsed {
         margin-left: 64px;
     }
+}
+
+.content {
+    margin: 0 !important;
 }
 
 .benefits p {
@@ -31,4 +37,10 @@
 
 .footer {
     background-color: none;
+}
+
+.h4 {
+    margin-bottom: 0 !important;
+    line-height: 130% !important;
+    letter-spacing: -0.1px;
 }

@@ -2,13 +2,13 @@ import React, { Dispatch, SetStateAction } from 'react';
 import s from './Sider.module.scss';
 import Sider from 'antd/lib/layout/Sider';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { Menu, MenuTheme } from 'antd';
+import { Button, Menu, MenuTheme } from 'antd';
 import logoShort from './../../assets/img/logo-short.svg';
 import logoWide from './../../assets/img/logo-wide.svg';
 import { ExitIcon } from '@components/icons/ExitIcon';
+import { grey } from '@ant-design/colors';
 
 interface SiderPropsInterface {
-    selectedItems: string[];
     items: MenuItemInterface[];
     collapsed: boolean;
     theme: MenuTheme;
@@ -26,7 +26,6 @@ interface MenuItemInterface {
 
 export const SiderComponent: React.FC<SiderPropsInterface> = ({
     items,
-    selectedItems,
     theme,
     collapsed,
     iconsColor,
@@ -45,27 +44,28 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
             <div className={s.logo}>
                 <img src={collapsed ? logoShort : logoWide} alt='' />
             </div>
-            <Menu theme={theme} mode='inline' defaultSelectedKeys={selectedItems} items={items} />
 
-            <Menu
-                className={s.exitBtn}
-                theme={theme}
-                mode='inline'
-                selectable={false}
-                items={[
-                    {
-                        key: '1',
-                        icon: <ExitIcon color={iconsColor} />,
-                        label: 'Выход',
-                    },
-                ]}
-            />
+            <Menu className={s.menu} theme={theme} mode='inline' selectable={false}>
+                {items.map((el) => (
+                    <Menu.Item className={s.menuItem} key={el.key} icon={el.icon}>
+                        {collapsed ? '' : el.label}
+                    </Menu.Item>
+                ))}
+            </Menu>
 
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                className: `trigger ${s.trigger}`,
-                id: 'trigger',
-                onClick: () => setCollapsed(!collapsed),
-            })}
+            <Menu className={s.exitBtnWrapper} theme={theme} mode='inline' selectable={false}>
+                <Menu.Item className={s.exitBtn} key={1} icon={<ExitIcon color={grey[13]} />}>
+                    Выход
+                </Menu.Item>
+            </Menu>
+
+            <Button
+                type='text'
+                data-test-id={'sider-switch'}
+                className={`trigger ${s.trigger}`}
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+            ></Button>
         </Sider>
     );
 };

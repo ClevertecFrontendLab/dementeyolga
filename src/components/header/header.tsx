@@ -14,10 +14,10 @@ export const HeaderComponent: React.FC = () => {
                     <Breadcrumb.Item>Главная</Breadcrumb.Item>
                 </Breadcrumb>
             </Row>
-            <Row style={{ flexWrap: 'nowrap' }}>
-                <Title style={{ color: 'currentcolor' }}>
-                    Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
-                    мечты!
+            <Row className={s.bottom}>
+                <Title className={s.h1} style={{ color: 'currentcolor' }}>
+                    Приветствуем тебя в CleverFit — приложении, <br /> которое поможет тебе добиться
+                    своей мечты!
                 </Title>
                 <Button type='text' icon={<SettingOutlined />}>
                     Настройки

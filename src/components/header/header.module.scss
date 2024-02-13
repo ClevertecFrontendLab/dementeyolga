@@ -1,3 +1,16 @@
 .header {
     height: fit-content !important;
+    padding: 16px 24px !important;
+}
+
+.h1 {
+    margin: 9px 0 6px !important;
+    font-weight: bold !important;
+    line-height: 130% !important;
+    letter-spacing: 0px;
+}
+
+.bottom {
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }

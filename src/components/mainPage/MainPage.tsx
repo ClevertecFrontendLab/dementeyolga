@@ -3,16 +3,19 @@ import { HeaderComponent } from '@components/Header/Header';
 import { SiderComponent } from '@components/Sider/Sider';
 import { Button, Card, Col, Layout, Row, Space } from 'antd';
 import React, { useState } from 'react';
-import 'antd/dist/antd.less';
-import s from './MainPage.module.scss';
 import Title from 'antd/lib/typography/Title';
 import { geekblue } from '@ant-design/colors';
 import { FooterComponent } from '@components/Footer/Footer';
+import 'antd/dist/antd.less';
+import Meta from 'antd/lib/card/Meta';
+import s from './MainPage.module.scss';
+import './MainPageOverride.scss';
 
 const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
-    const [iconsColor, setIconsColor] = useState(geekblue[9]);
+    const [iconsColor, setIconsColor] = useState(geekblue[8]);
+    const [contentAccentColor, setContentAccentColor] = useState(geekblue[5]);
     const [siderWidth, setSiderWidth] = useState(208);
     const [collapsed, setCollapsed] = useState(false);
     const [menuItems, setMenuItems] = useState([
@@ -37,7 +40,6 @@ export const MainPage: React.FC = () => {
             label: 'Профиль',
         },
     ]);
-    const [selectedItems, setSelectedItems] = useState(['1']);
 
     return (
         <Layout className={s.siteLayout}>
@@ -45,7 +47,6 @@ export const MainPage: React.FC = () => {
                 collapsed={collapsed}
                 theme='light'
                 items={menuItems}
-                selectedItems={selectedItems}
                 setCollapsed={setCollapsed}
                 width={siderWidth}
                 setSiderWidth={setSiderWidth}
@@ -55,7 +56,7 @@ export const MainPage: React.FC = () => {
             <Layout className={`${s.mainLayout}  ${collapsed ? s.siderCollapsed : ''}`}>
                 <HeaderComponent></HeaderComponent>
                 <Content
-                    className='site-layout-background'
+                    className={`site-layout-background ${s.content}`}
                     style={{
                         margin: '24px 16px',
                         padding: 24,
@@ -64,7 +65,7 @@ export const MainPage: React.FC = () => {
                 >
                     <Space direction='vertical' size='large'>
                         <Row style={{ width: '100%', maxWidth: 752 }}>
-                            <Card style={{ color: geekblue[9] }} className={s.benefits}>
+                            <Card style={{ color: iconsColor }} className={s.benefits}>
                                 <p>С CleverFit ты сможешь:</p>
                                 <p>
                                     — планировать свои тренировки на календаре, выбирая тип
@@ -90,7 +91,7 @@ export const MainPage: React.FC = () => {
                         <Space direction='vertical' size='middle'>
                             <Row style={{ width: '100%', maxWidth: 752 }}>
                                 <Card>
-                                    <Title level={4}>
+                                    <Title level={4} className={s.h4}>
                                         CleverFit — это не просто приложение, а твой личный помощник
                                         в мире фитнеса. Не откладывай на завтра — начни
                                         тренироваться уже сегодня!
@@ -101,48 +102,66 @@ export const MainPage: React.FC = () => {
                             <Row gutter={16}>
                                 <Col span={8}>
                                     <Card
-                                        title='Расписать тренировки'
                                         style={{ textAlign: 'center' }}
                                         bordered={false}
                                         actions={[
-                                            <Button type='link' icon={<HeartFilled />} block>
+                                            <Button
+                                                className={s.cardButton}
+                                                style={{ color: contentAccentColor }}
+                                                type='link'
+                                                icon={<HeartFilled />}
+                                                block
+                                            >
                                                 Тренировки
                                             </Button>,
                                         ]}
-                                    ></Card>
+                                    >
+                                        <Meta title='Расписать тренировки' />
+                                    </Card>
                                 </Col>
                                 <Col span={8}>
                                     <Card
-                                        title='Назначить календарь'
                                         style={{ textAlign: 'center' }}
                                         bordered={false}
                                         actions={[
-                                            <Button type='link' icon={<CalendarOutlined />} block>
+                                            <Button
+                                                className={s.cardButton}
+                                                style={{ color: contentAccentColor }}
+                                                type='link'
+                                                icon={<CalendarOutlined />}
+                                                block
+                                            >
                                                 Календарь
                                             </Button>,
                                         ]}
-                                    ></Card>
+                                    >
+                                        <Meta title='Назначить календарь' />
+                                    </Card>
                                 </Col>
                                 <Col span={8}>
                                     <Card
-                                        title='Заполнить профиль'
                                         style={{ textAlign: 'center' }}
                                         bordered={false}
                                         actions={[
-                                            <Button type='link' icon={<IdcardOutlined />} block>
-                                                Профиль
-                                            </Button>,
-                                            <Button type='link' icon={<IdcardOutlined />} block>
+                                            <Button
+                                                className={s.cardButton}
+                                                style={{ color: contentAccentColor }}
+                                                type='link'
+                                                icon={<IdcardOutlined />}
+                                                block
+                                            >
                                                 Профиль
                                             </Button>,
                                         ]}
-                                    ></Card>
+                                    >
+                                        <Meta title='Заполнить профиль' />
+                                    </Card>
                                 </Col>
                             </Row>
                         </Space>
                     </Space>
                 </Content>
-                <FooterComponent></FooterComponent>
+                <FooterComponent contentAccentColor={contentAccentColor}></FooterComponent>
             </Layout>
         </Layout>
     );

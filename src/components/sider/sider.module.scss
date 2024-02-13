@@ -1,6 +1,7 @@
 .sider {
     width: 208px !important;
     max-width: 100% !important;
+    min-width: 64px !important;
     height: 100vh;
     position: fixed !important;
     top: 0;
@@ -15,20 +16,57 @@
 }
 
 .trigger {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: absolute !important;
+    top: 50%;
     bottom: 0;
-    right: -20px;
+    right: -18px;
+
+    width: 20px !important;
+    height: 66px !important;
+    background-image: url('./../../assets/img/unfold-btn-icon.svg') !important;
+    background-size: cover;
+
+    transform: translateY(-50%);
 }
 
 .logo {
-    margin: 44px 0 67px;
+    margin: 44px 0 67px -17px;
+    height: 34px;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.exitBtnWrapper {
+    position: absolute;
+    bottom: 0;
+}
+
+.menuItem {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+    padding-left: 17px !important;
+    display: flex;
+    gap: 2px !important;
 }
 
 .exitBtn {
-    position: absolute;
-    bottom: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 17px !important;
+    gap: 18px !important;
+}
+
+.sider.collapsed {
+    .logo {
+        margin: 49px 0 63px;
+        img {
+            width: 29px;
+            height: 27px;
+        }
+    }
+
+    .menuItem {
+        padding-left: 25px !important;
+    }
 }
