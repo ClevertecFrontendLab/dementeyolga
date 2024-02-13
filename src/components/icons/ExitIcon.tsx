@@ -1,6 +1,17 @@
-export const ExitIcon: React.FC = () => {
+import React from 'react';
+
+interface ExitIconProps {
+    color: string;
+}
+
+export const ExitIcon: React.FC<ExitIconProps> = ({ color }) => {
     return (
-        <span role='img' aria-label='exit' className='anticon anticon-idcard ant-menu-item-icon'>
+        <span
+            style={{ color: color }}
+            role='img'
+            aria-label='exit'
+            className='anticon anticon-idcard ant-menu-item-icon'
+        >
             <svg
                 viewBox='0 0 15 16'
                 xmlns='http://www.w3.org/2000/svg'

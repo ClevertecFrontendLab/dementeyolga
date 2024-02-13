@@ -22,31 +22,32 @@ import { FooterComponent } from '@components/Footer/Footer';
 const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
+    const [iconsColor, setIconsColor] = useState(geekblue[9]);
     const [collapsed, setCollapsed] = useState(false);
     const [menuItems, setMenuItems] = useState([
         {
             key: '1',
-            icon: <CalendarOutlined />,
+            icon: <CalendarOutlined style={{ color: iconsColor }} />,
             label: 'Календарь',
         },
         {
             key: '2',
-            icon: <HeartFilled />,
+            icon: <HeartFilled style={{ color: iconsColor }} />,
             label: 'Тренировки',
         },
         {
             key: '3',
-            icon: <TrophyFilled />,
+            icon: <TrophyFilled style={{ color: iconsColor }} />,
             label: 'Достижения',
         },
         {
             key: '4',
-            icon: <IdcardOutlined />,
+            icon: <IdcardOutlined style={{ color: iconsColor }} />,
             label: 'Профиль',
         },
         {
             key: '5',
-            icon: <ExitIcon />,
+            icon: <ExitIcon color={iconsColor} />,
             label: 'Выйти',
         },
     ]);
