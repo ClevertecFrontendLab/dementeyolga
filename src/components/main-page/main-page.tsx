@@ -10,17 +10,17 @@ import Icon, {
     SettingOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
+import { HeaderComponent } from '@components/Header/Header';
 import { ExitIcon } from '@components/icons/ExitIcon';
-import { Breadcrumb, Button, Card, Col, Layout, Menu, Row, Space, Typography } from 'antd';
+import { Breadcrumb, Button, Card, Col, Layout, Menu, Row, Space } from 'antd';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import styles from './main-page.module.scss';
 import Title from 'antd/lib/typography/Title';
 import { Footer } from 'antd/lib/layout/layout';
 import Meta from 'antd/lib/card/Meta';
-// import exitIconSvg from './../../assets/img/exit.svg';
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 export const MainPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -71,22 +71,7 @@ export const MainPage: React.FC = () => {
                 })}
             </Sider>
             <Layout className={styles.siteLayout}>
-                <Header className='site-layout-background' style={{ padding: 0 }}>
-                    <Row>
-                        <Breadcrumb>
-                            <Breadcrumb.Item>Главная</Breadcrumb.Item>
-                        </Breadcrumb>
-                    </Row>
-                    <Row>
-                        <Title>
-                            Приветствуем тебя в CleverFit — приложении, которое поможет тебе
-                            добиться своей мечты!
-                        </Title>
-                        <Button type='text' icon={<SettingOutlined />}>
-                            Настройки
-                        </Button>
-                    </Row>
-                </Header>
+                <HeaderComponent></HeaderComponent>
                 <Content
                     className='site-layout-background'
                     style={{
