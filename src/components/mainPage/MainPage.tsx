@@ -1,25 +1,22 @@
-import Icon, {
+import {
     AndroidFilled,
     AppleFilled,
     CalendarOutlined,
     HeartFilled,
     IdcardOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    ProfileOutlined,
-    SettingOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
 import { HeaderComponent } from '@components/Header/Header';
 import { SiderComponent } from '@components/Sider/Sider';
 import { ExitIcon } from '@components/icons/ExitIcon';
-import { Breadcrumb, Button, Card, Col, Layout, Menu, Row, Space } from 'antd';
+import { Button, Card, Col, Layout, Row, Space } from 'antd';
 import React, { useState } from 'react';
 import 'antd/dist/antd.less';
-import s from './main-page.module.scss';
+import s from './MainPage.module.scss';
 import Title from 'antd/lib/typography/Title';
 import { Footer } from 'antd/lib/layout/layout';
 import Meta from 'antd/lib/card/Meta';
+import { geekblue } from '@ant-design/colors';
 
 const { Content } = Layout;
 
@@ -76,7 +73,7 @@ export const MainPage: React.FC = () => {
                 >
                     <Space direction='vertical' size='large'>
                         <Row style={{ width: '100%', maxWidth: 752 }}>
-                            <Card>
+                            <Card style={{ color: geekblue[9] }} className={s.benefits}>
                                 <p>С CleverFit ты сможешь:</p>
                                 <p>
                                     — планировать свои тренировки на календаре, выбирая тип
@@ -153,27 +150,24 @@ export const MainPage: React.FC = () => {
                             </Row>
                         </Space>
                     </Space>
-                    <Footer>
-                        <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                            <Button type='link'>Смотреть отзывы</Button>
-                            <Card
-                                actions={[
-                                    <Button type='text' icon={<AndroidFilled />}>
-                                        Android OS
-                                    </Button>,
-                                    <Button type='text' icon={<AppleFilled />}>
-                                        Android OS
-                                    </Button>,
-                                ]}
-                            >
-                                <Meta
-                                    title='Скачать на телефон '
-                                    description='Доступно в PRO-тарифе'
-                                />
-                            </Card>
-                        </Row>
-                    </Footer>
                 </Content>
+                <Footer>
+                    <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                        <Button type='link'>Смотреть отзывы</Button>
+                        <Card
+                            actions={[
+                                <Button type='text' icon={<AndroidFilled />}>
+                                    Android OS
+                                </Button>,
+                                <Button type='text' icon={<AppleFilled />}>
+                                    Android OS
+                                </Button>,
+                            ]}
+                        >
+                            <Meta title='Скачать на телефон ' description='Доступно в PRO-тарифе' />
+                        </Card>
+                    </Row>
+                </Footer>
             </Layout>
         </Layout>
     );

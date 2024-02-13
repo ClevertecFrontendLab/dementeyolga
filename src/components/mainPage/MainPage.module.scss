@@ -1,0 +1,27 @@
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.siteLayout {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainLayout {
+    width: 100%;
+    background-image: url('./../../assets/img/main-page-bg-light.png');
+    background-size: cover;
+}
+
+.benefits p {
+    line-height: 130%;
+    font-size: 16px;
+    margin: 0;
+}
+
+.footer {
+    background-color: none;
+}
