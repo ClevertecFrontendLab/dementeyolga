@@ -1,0 +1,36 @@
+@use './../../styles/mixins' as *;
+
+.header {
+    width: 100% !important;
+    height: fit-content !important;
+    padding: 16px 24px !important;
+}
+
+.h1 {
+    margin: 10px 0 6px !important;
+    font-weight: bold !important;
+    line-height: 130% !important;
+    letter-spacing: 0;
+
+    @include max-992 {
+        font-size: 1.5rem !important;
+        letter-spacing: -0.3px;
+    }
+
+    @include max-480 {
+        font-size: 1.25rem !important;
+    }
+}
+
+.bottom {
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+
+    @include max-480 {
+        margin-top: 16px !important;
+    }
+}
+
+.settingsBtn {
+    margin-top: 3px !important;
+}

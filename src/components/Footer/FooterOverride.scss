@@ -1,0 +1,24 @@
+@use './../../styles/mixins' as *;
+.ant-layout-footer {
+    padding: 24px 24px 42px !important;
+
+    .ant-card-body {
+        padding: 12px 24px !important;
+
+        @include max-480 {
+            text-align: center;
+        }
+    }
+
+    .ant-btn {
+        padding: 0 12px;
+    }
+
+    .ant-card-meta-title {
+        margin-bottom: 5px !important;
+    }
+
+    @include max-480 {
+        padding: 0 16px 42px !important;
+    }
+}

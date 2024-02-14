@@ -1,5 +1,26 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter/Inter-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter/Inter-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter/Inter-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -13,6 +34,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+body * {
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 a {
     font-weight: 500;
     color: #646cff;
@@ -24,8 +49,7 @@ a:hover {
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
+    width: 100%;
     min-width: 320px;
     min-height: 100vh;
 }
