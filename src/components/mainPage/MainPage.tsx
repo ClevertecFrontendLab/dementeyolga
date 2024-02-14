@@ -1,11 +1,11 @@
 import { CalendarOutlined, HeartFilled, IdcardOutlined, TrophyFilled } from '@ant-design/icons';
-import { HeaderComponent } from '@components/header/Header';
-import { SiderComponent } from '@components/sider/Sider';
+import { HeaderComponent } from '@components/header/Header.tsx';
+import { SiderComponent } from '@components/sider/Sider.tsx';
 import { Button, Card, Col, Grid, Layout, Row, Space } from 'antd';
 import React, { useState } from 'react';
 import Title from 'antd/lib/typography/Title';
 import { geekblue } from '@ant-design/colors';
-import { FooterComponent } from '@components/footer/Footer';
+import { FooterComponent } from '@components/footer/Footer.tsx';
 import 'antd/dist/antd.less';
 import Meta from 'antd/lib/card/Meta';
 const { useBreakpoint } = Grid;
