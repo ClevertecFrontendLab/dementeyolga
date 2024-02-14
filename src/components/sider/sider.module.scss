@@ -1,8 +1,9 @@
+@use './../../styles/mixins' as *;
+
 .sider {
     width: 208px !important;
     max-width: 100% !important;
     min-width: 64px !important;
-    height: 100vh;
     position: fixed !important;
     top: 0;
     left: 0;
@@ -12,6 +13,15 @@
 
     &.collapsed {
         width: 64px !important;
+
+        @include max-480 {
+            max-width: 0 !important;
+            min-width: 0 !important;
+        }
+    }
+
+    @include max-480 {
+        width: 106px !important;
     }
 }
 
@@ -23,10 +33,22 @@
 
     width: 20px !important;
     height: 66px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
     background-image: url('./../../assets/img/unfold-btn-icon.svg') !important;
-    background-size: cover;
+    background-size: cover !important;
+    background-position: center;
+    background-repeat: no-repeat;
 
     transform: translateY(-50%);
+
+    @include max-480 {
+        top: 24px;
+        transform: none;
+    }
 }
 
 .logo {
@@ -48,6 +70,12 @@
     padding-left: 17px !important;
     display: flex;
     gap: 2px !important;
+
+    @include max-480 {
+        span[role='img'] {
+            display: none;
+        }
+    }
 }
 
 .exitBtn {
@@ -55,6 +83,12 @@
     margin-bottom: 0 !important;
     padding-left: 17px !important;
     gap: 18px !important;
+
+    @include max-480 {
+        span[role='img'] {
+            display: none;
+        }
+    }
 }
 
 .sider.collapsed {
@@ -68,5 +102,13 @@
 
     .menuItem {
         padding-left: 25px !important;
+    }
+
+    @include max-480 {
+        .logo,
+        .menuItem,
+        .exitBtnWrapper {
+            display: none;
+        }
     }
 }

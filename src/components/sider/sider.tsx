@@ -7,6 +7,7 @@ import logoShort from './../../assets/img/logo-short.svg';
 import logoWide from './../../assets/img/logo-wide.svg';
 import { ExitIcon } from '@components/icons/ExitIcon';
 import { grey } from '@ant-design/colors';
+const { useBreakpoint } = Grid;
 
 interface SiderPropsInterface {
     items: MenuItemInterface[];
@@ -16,7 +17,6 @@ interface SiderPropsInterface {
     width: number;
     setCollapsed: Dispatch<SetStateAction<boolean>>;
     setSiderWidth: Dispatch<SetStateAction<number>>;
-    currentBreakpoints: string[];
 }
 
 interface MenuItemInterface {
@@ -30,8 +30,15 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
     theme,
     collapsed,
     setCollapsed,
-    currentBreakpoints,
 }) => {
+    const screens = useBreakpoint();
+    const currentBreakpoints = (() => {
+        return Object.entries(screens)
+            .filter((screen) => !!screen[1])
+            .map((screen) => screen[0]);
+    })();
+    console.log(currentBreakpoints);
+
     return (
         <Sider
             className={`${s.sider} ${collapsed ? s.collapsed : ''}`}
@@ -43,7 +50,15 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
             collapsed={collapsed}
         >
             <div className={s.logo}>
-                <img src={collapsed ? logoShort : logoWide} alt='' />
+                <img
+                    src={
+                        collapsed ||
+                        (currentBreakpoints.length === 1 && currentBreakpoints.includes('xs'))
+                            ? logoShort
+                            : logoWide
+                    }
+                    alt=''
+                />
             </div>
 
             <Menu className={s.menu} theme={theme} mode='inline' selectable={false}>
@@ -65,6 +80,7 @@ export const SiderComponent: React.FC<SiderPropsInterface> = ({
                 data-test-id={
                     currentBreakpoints.includes('sm') ? 'sider-switch' : 'sider-switch-mobile'
                 }
+                style={{ color: grey[3] }}
                 className={`trigger ${s.trigger}`}
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}

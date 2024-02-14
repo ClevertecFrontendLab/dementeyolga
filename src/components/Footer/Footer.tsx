@@ -19,12 +19,13 @@ export const FooterComponent: React.FC<FooterPropsInterface> = ({ contentAccentC
                     Смотреть отзывы
                 </Button>
                 <Card
+                    className={s.footerCard}
                     actions={[
                         <Button type='text' icon={<AndroidFilled />}>
                             Android OS
                         </Button>,
                         <Button type='text' icon={<AppleFilled />}>
-                            Android OS
+                            Apple iOS
                         </Button>,
                     ]}
                 >

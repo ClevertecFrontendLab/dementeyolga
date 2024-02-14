@@ -1,4 +1,4 @@
-@import './../Sider/Sider.module.scss';
+@use './../../styles/mixins' as *;
 
 .button {
     width: 100%;
@@ -12,27 +12,67 @@
     flex-direction: row;
     background-image: url('./../../assets/img/main-page-bg-light.png') !important;
     background-size: cover;
+    background-position: center;
 }
 
 .mainLayout {
     margin-left: 208px;
     width: 100%;
+    min-height: 100vh;
     background-color: transparent;
     transition: 0.3s;
 
     &.siderCollapsed {
         margin-left: 64px;
     }
+
+    @include max-480 {
+        margin-left: 0;
+
+        &.siderCollapsed {
+            margin-left: 0;
+        }
+    }
+}
+
+.headerContentWrapper {
+    height: 100%;
+    justify-content: space-between;
+    gap: 0 !important;
 }
 
 .content {
     margin: 0 !important;
+
+    @include max-480 {
+        padding: 24px 16px !important;
+    }
 }
 
 .benefits p {
     line-height: 130%;
     font-size: 16px;
+    font-weight: 400;
     margin: 0;
+}
+
+.actionCards {
+    @include max-480 {
+        row-gap: 8px;
+    }
+}
+
+.actionCard {
+    text-align: center;
+    line-height: 130%;
+
+    @include max-992 {
+        text-align: left;
+    }
+
+    @include max-480 {
+        text-align: center;
+    }
 }
 
 .footer {
